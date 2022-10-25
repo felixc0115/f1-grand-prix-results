@@ -9,9 +9,14 @@ const DriverList = ({ roundResults }) => {
           <DriverItem
             key={driver.Driver.driverId}
             id={driver.Driver.driverId}
-            // name={driver.title}
-            // address={driver.address}
-            // description={driver.description}
+            name={`${driver.Driver.givenName} ${driver.Driver.familyName}`}
+            constructor={driver.Constructor.name}
+            nationality={driver.Driver.nationality}
+            driverNum={+driver.Driver.permanentNumber}
+            completionStatus={driver.status}
+            roundPosition={driver.position}
+            pointsAwarded={+driver.points}
+            wikipediaURL={driver.Driver.url}
           />
         );
       })}

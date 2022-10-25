@@ -9,15 +9,18 @@ function RoundResultsPage() {
 
   useEffect(() => {
     axios
-      .get("http://ergast.com/api/f1/2008/5/results.json")
+      .get(`http://ergast.com/api/f1/${year}/${round}/results.json`)
       .then((response) => {
         setRoundResults(response.data.MRData.RaceTable.Races[0].Results);
-        console.log(roundResults);
       });
   }, [year, round]);
 
+  useEffect(() => {
+    console.log(roundResults);
+  }, [roundResults]);
+
   const handleYearChange = (event) => {
-    setRound(event.target.value);
+    setYear(event.target.value);
   };
 
   const handleRoundChange = (event) => {
@@ -26,7 +29,7 @@ function RoundResultsPage() {
 
   return (
     <section>
-      <h1>Round Results in Year</h1>
+      <h1>Round Results by Year</h1>
       {/* Update year based on user input */}
       <div>
         <label htmlFor="year">Select a Year between 1950 and 2022: </label>
